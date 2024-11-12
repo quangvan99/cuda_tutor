@@ -16,7 +16,7 @@ double measure_exec_time(Func&& func, Args&&... args) {
         std::cout << elaps << "s" << std::endl;
         du.push_back(elaps);
     }
-    auto time_taken = std::accumulate(du.begin(), du.end(), 0.0) / du.size();      
+    auto time_taken = std::accumulate(du.begin()+1, du.end(), 0.0) / (du.size()-1);      
     std::cout << "Execution Time: " << time_taken << " s" << std::endl;
     return time_taken;        
 }

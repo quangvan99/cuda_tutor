@@ -18,7 +18,7 @@ int main()
 
 
     // Resize images to ensure they are the same size
-    cv::Size size(10000, 10000); // Example size, adjust as needed
+    cv::Size size(2000, 2000); // Example size, adjust as needed
     cv::resize(image1, image1, size);
     cv::resize(image2, image2, size);
 

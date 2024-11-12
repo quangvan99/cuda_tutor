@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 import time
 
-def main():
+if __name__ == "__main__":
     # Load the image in grayscale
     img = cv2.imread("im/t1.jpg", cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (10000, 10000))
+    img = cv2.resize(img, (2000, 2000))
 
     durations = []
     for i in range(10):
@@ -34,6 +34,3 @@ def main():
     # Optionally, calculate and print average duration
     average_duration = np.mean(durations)
     print(f"Average Duration: {average_duration:.4f}s")
-
-if __name__ == "__main__":
-    main()

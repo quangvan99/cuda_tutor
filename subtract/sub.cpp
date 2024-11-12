@@ -8,13 +8,11 @@ void subtract(const cv::Mat& img1, const cv::Mat& img2, cv::Mat& res) {
 
 int main() {
 
-    //  Get Build Information()
-    std::cout << cv::getBuildInformation() << std::endl;
 
     cv::Mat image1 = cv::imread("im/t1.jpg");
     cv::Mat image2 = cv::imread("im/t2.jpg");
 
-    cv::Size newSize(10000, 10000); 
+    cv::Size newSize(2000, 2000); 
     cv::resize(image1, image1, newSize);
     cv::resize(image2, image2, newSize);
 

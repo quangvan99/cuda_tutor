@@ -11,3 +11,5 @@ setup(
     cmdclass={
         'build_ext': BuildExtension
     })
+
+#python3 setup.py install 

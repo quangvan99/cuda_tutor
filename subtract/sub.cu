@@ -26,7 +26,7 @@ void h_image_subtract(unsigned char *d_img1, unsigned char *d_img2, unsigned cha
     cudaMemcpyAsync(d_img1, h_img1.data, numBytes, cudaMemcpyHostToDevice, stream);
     cudaMemcpyAsync(d_img2, h_img2.data, numBytes, cudaMemcpyHostToDevice, stream);
     dim3 threads(32, 32); // Smaller thread block size for better handling of larger data
-    dim3 blocks((width + threads.x - 1) / threads.x, (height + threads.y - 1) / threads.y);
+    dim3 blocks(ceil(width / (float)threads.x), ceil(height / (float)threads.y));
     d_image_subtract<<<blocks, threads, 0, stream>>>(d_img1, d_img2, d_result, width, height);
     cudaMemcpyAsync(h_result, d_result, numBytes, cudaMemcpyDeviceToHost, stream);
     cudaStreamSynchronize(stream);
@@ -38,7 +38,7 @@ int main() {
     cv::Mat h_img2 = cv::imread("im/t2.jpg", cv::IMREAD_COLOR);
 
     // Resize images to the same size
-    cv::Size newSize(10000, 10000); // Assuming a smaller and more practical size
+    cv::Size newSize(2000, 2000); // Assuming a smaller and more practical size
     cv::resize(h_img1, h_img1, newSize);
     cv::resize(h_img2, h_img2, newSize);
 

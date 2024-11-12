@@ -12,7 +12,7 @@ def main():
         return
 
     # Resize images
-    size = (10000, 10000)
+    size = (2000, 2000)
     image1 = cv2.resize(image1, size)
     image2 = cv2.resize(image2, size)
 
