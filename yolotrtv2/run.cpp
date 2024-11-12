@@ -13,16 +13,7 @@ using namespace nvinfer1;
 #define NUM_BOX_ELEMENT 7
 #define MAX_IMAGE_INPUT_SIZE_THRESH 5000 * 5000
 
-#define CHECK(status)                                    \
-    do                                                   \
-    {                                                    \
-        auto ret = (status);                             \
-        if (ret != 0)                                    \
-        {                                                \
-            std::cerr << "Cuda failure: " << ret << std::endl; \
-            abort();                                     \
-        }                                                \
-    } while (0)
+#define CHECK(call) { cudaError_t err = call; if (err != cudaSuccess) { printf("CUDA error: %s\n", cudaGetErrorString(err)); exit(1); } }
 
 #define DEVICE 0  // GPU id
 #define NMS_THRESH 0.45

@@ -16,7 +16,7 @@ if [[ $SOURCE_FILE == *.cpp ]]; then
     g++ -o $EXEC_FILE $SOURCE_FILE `pkg-config --cflags --libs opencv`
 elif [[ $SOURCE_FILE == *.cu ]]; then
     # Compile with nvcc for .cu files
-    nvcc -o $EXEC_FILE $SOURCE_FILE `pkg-config --cflags --libs opencv` -diag-suppress=611
+    nvcc -o $EXEC_FILE $SOURCE_FILE -lcudnn -lcublas `pkg-config --cflags --libs opencv` -diag-suppress=611
 else
     echo "Unsupported file extension. Use .cpp or .cu files only."
     exit 1
