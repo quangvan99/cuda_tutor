@@ -295,8 +295,8 @@ std::vector<bbox> Detector::detect(const cv::Mat& img)
 void detect(Detector& detector, cv::Mat& img){
     
     detector.detect(img);
-    // detector.draw(img);
-    // cv::imwrite("ret.jpg", img);
+    detector.draw(img);
+    cv::imwrite("ret.jpg", img);
 }
 
 int main(int argc, char** argv)
@@ -307,8 +307,8 @@ int main(int argc, char** argv)
 
     Detector detector(engine_path);
     cv::Mat img = cv::imread(path);
-    // detect(detector, path);
-    measure_exec_time(detect, detector, img);
+    detect(detector, img);
+    // measure_exec_time(detect, detector, img);
 
     return 0;
 }

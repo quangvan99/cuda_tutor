@@ -10,7 +10,8 @@ vector<Detection> detect(YOLOv11& model, Mat& image)
     model.preprocess(image);
     model.infer();
     model.postprocess(objects);
-    
+    model.draw(image, objects);
+    imwrite("ret.jpg", image);
     return objects;
 }
 
@@ -23,16 +24,14 @@ int main(int argc, char** argv)
     YOLOv11 model(engine_file_path);
 
     Mat image = imread(path);
-    // detect(model, image);
+    detect(model, image);
 
     // Mat image2 = imread(path);
     // detect(model, image2);
 
     // Mat image3 = imread(path);
     // detect(model, image3);
-    // model.draw(image, objects);
-    // imwrite("in_out/ret.jpg", image);
-    measure_exec_time(detect, model, image);
+    // measure_exec_time(detect, model, image);
 
     return 0;
 }
